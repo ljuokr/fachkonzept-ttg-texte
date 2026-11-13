@@ -61,9 +61,8 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px}
 .fach{background:var(--hi);border-radius:6px;padding:14px 16px}
 .fach ul{gap:6px}
 .quotes{display:grid;gap:10px}
-.quote{border:1px solid var(--line);border-radius:6px;padding:12px 14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:start}
+.quote{border:1px solid var(--line);border-radius:6px;padding:12px 14px;display:grid;gap:6px}
 .quote .src{font-size:var(--s3);color:var(--muted)}
-.quote button{grid-row:1/3;grid-column:2}
 details{border-top:1px solid var(--line)}
 details:last-of-type{border-bottom:1px solid var(--line)}
 summary{cursor:pointer;padding:9px 0}
@@ -2704,8 +2703,8 @@ function renderText(t){
   v.append(el('section',{id:'s-kern'},el('h3',{text:mitSeite?'Kernaussagen, mit Seitenzahl im Original':'Kernaussagen'}),
     el('ul',null,(t.kern||[]).map(k=>el('li',null,k.split(/(\(S\. \d[\d\-, ]*\))/).map((p,i)=>i%2?el('span',{class:'pg',text:p}):p))))));
   const zq=el('div',{class:'quotes'});
-  (t.zitate||[]).forEach(([z,s])=>{zq.append(el('div',{class:'quote'},el('div',{text:'«'+z+'»'}),cbtn('«'+z+'» '+s),el('div',{class:'src',text:s})));});
-  v.append(el('section',{id:'s-zit'},el('h3',{text:'Kernzitate, fertig zum Kopieren'}),zq));
+  (t.zitate||[]).forEach(([z,s])=>{zq.append(el('div',{class:'quote'},el('div',{text:'«'+z+'»'}),el('div',{class:'src',text:s})));});
+  v.append(el('section',{id:'s-zit'},el('h3',{text:'Kernzitate'}),zq));
   const la=el('div');
   (t.lang||[]).forEach(([h,p])=>la.append(el('details',null,el('summary',{text:h}),el('p',{text:p}))));
   const all=el('button',{type:'button',text:'Alle aufklappen'});
